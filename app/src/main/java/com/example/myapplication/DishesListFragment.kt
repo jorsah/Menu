@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_dishes_list.*
@@ -37,11 +36,13 @@ class DishesListFragment: Fragment() {
             override fun onButtonClicked(position: Int, dish: Dish) {
                 listener.favoriteBtnClicked(dish)
             }
-
         }
 
         create_dish_button.setOnClickListener{
             listener.onCreateDishButton()
+        }
+        favorite.setOnClickListener {
+            listener.favoriteClicked()
         }
     }
 
@@ -55,5 +56,7 @@ class DishesListFragment: Fragment() {
         fun onDishItemClicked(dish: Dish)
 
         fun favoriteBtnClicked(dish: Dish)
+
+        fun favoriteClicked()
     }
 }

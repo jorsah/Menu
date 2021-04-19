@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.fragment_create_dish.*
 
 class DishCreateFragment:Fragment() {
     lateinit var createDishFragmentListener: CreateDishFragmentListener
+    lateinit var listener: DishInfoFragment.BackClickListener
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,6 +26,9 @@ class DishCreateFragment:Fragment() {
                 val dish = Dish(nameET.text.toString(),ratingET.text.toString().toDouble(),R.drawable.dish_icon,descriptionET.text.toString())
                 createDishFragmentListener.onDishCreated(dish)
             }
+        }
+        back_button2.setOnClickListener {
+            listener.backClicked()
         }
     }
     interface CreateDishFragmentListener{

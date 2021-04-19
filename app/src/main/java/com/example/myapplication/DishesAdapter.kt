@@ -6,11 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.dish_row.view.*
 
-class DishesAdapter(var dishesList:MutableList<Dish>) :
+class DishesAdapter(private var dishesList:MutableList<Dish>) :
     RecyclerView.Adapter<DishesAdapter.ViewHolder>() {
 
     lateinit var listener: DishListItemClickListener
@@ -23,8 +22,8 @@ class DishesAdapter(var dishesList:MutableList<Dish>) :
     }
 
     @SuppressLint("ResourceAsColor")
-    override fun onBindViewHolder(holder: DishesAdapter.ViewHolder, position: Int) {
-        holder.init(dishesList[position],position)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.init(dishesList[position])
         holder.itemView.setOnClickListener{
             listener.onItemClicked(position,dishesList[position])
         }
@@ -40,14 +39,11 @@ class DishesAdapter(var dishesList:MutableList<Dish>) :
 
     class ViewHolder(view: View):RecyclerView.ViewHolder(view){
         @SuppressLint("ResourceAsColor")
-        fun init(dish:Dish, position: Int){
+        fun init(dish: Dish){
             itemView.apply {
                 findViewById<TextView>(R.id.name).text = dish.name
                 findViewById<TextView>(R.id.rating).text = dish.rating.toString()
                 findViewById<ImageView>(R.id.imageView).setImageResource(dish.imageView)
-                favoriteBtn.setOnClickListener {
-                    favoriteBtn.setBackgroundColor(R.color.black)
-                }
             }
         }
     }

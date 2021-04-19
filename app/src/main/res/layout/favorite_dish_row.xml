@@ -12,7 +12,7 @@
         android:background="#EBF6F6F6">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewFv"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:layout_marginStart="16dp"
@@ -26,43 +26,30 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/nameFv"
             android:layout_width="222dp"
             android:layout_height="35dp"
             android:layout_marginStart="21dp"
             android:layout_marginTop="16dp"
-            android:text="@string/name"
+            android:text="Name"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageViewFv"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/favoriteBtn"
-            android:layout_width="28dp"
-            android:layout_height="23dp"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/name"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_favorite_24"
-            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="252dp"
-            android:layout_height="18dp"
+            android:layout_width="250dp"
+            android:layout_height="20dp"
             android:layout_marginStart="21dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="9dp"
             android:text="Cafe•Western Food•Western•$"
             android:textColor="#5A5A5A"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintStart_toEndOf="@+id/imageViewFv"
+            app:layout_constraintTop_toBottomOf="@+id/nameFv" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -72,15 +59,15 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="23dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageViewFv"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:srcCompat="@android:drawable/btn_star_big_on"
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/rating"
-            android:layout_width="26dp"
-            android:layout_height="27dp"
+            android:id="@+id/ratingFv"
+            android:layout_width="34dp"
+            android:layout_height="24dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="23dp"
             android:layout_marginBottom="29dp"
@@ -104,8 +91,22 @@
             android:textColor="#5A5A5A"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/rating"
+            app:layout_constraintStart_toEndOf="@+id/ratingFv"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ImageButton
+            android:id="@+id/deleteBtn"
+            android:layout_width="28dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/nameFv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

@@ -9,13 +9,13 @@
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/favorite"
         android:layout_width="409dp"
         android:layout_height="53dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="4dp"
-        android:text="Button"
         android:background="@color/purple_700"
+        android:text="Favorites"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/favorite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,6 +39,6 @@
         android:background="@color/purple_700"
         android:contentDescription="@string/bottom_sheet_behavior"
         android:src="@android:drawable/ic_menu_add"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/favorite"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

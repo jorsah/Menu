@@ -1,17 +1,16 @@
  package com.example.myapplication
 
-import android.content.res.Resources
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity(),
+ class MainActivity : AppCompatActivity(),
         DishesListFragment.DishesListFragmentListener,
         DishCreateFragment.CreateDishFragmentListener,
-        DishInfoFragment.BackClickListener
-{
+        DishInfoFragment.BackClickListener, FavoriteListFragmentListener {
     private val dishesListFragment = DishesListFragment()
-    lateinit var dishCreateFragment: DishCreateFragment
-    var dishInfoFragment = DishInfoFragment()
+    private val dishCreateFragment = DishCreateFragment()
+    private val favoriteListFragment = FavoriteListFragment()
+    private val dishInfoFragment = DishInfoFragment()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,11 +18,14 @@ class MainActivity : AppCompatActivity(),
         setContentView(R.layout.activity_main)
         dishesListFragment.listener = this
         dishInfoFragment.listener = this
+        dishCreateFragment.listener = this
+        favoriteListFragment.listener =this
+        favoriteListFragment.itemListener = this
+        favoriteListFragment.deleteBtnListener = this
         supportFragmentManager.beginTransaction().add(R.id.container,dishesListFragment).commit()
     }
 
     override fun onCreateDishButton() {
-        val dishCreateFragment = DishCreateFragment()
         dishCreateFragment.createDishFragmentListener = this
         supportFragmentManager.beginTransaction().replace(R.id.container,dishCreateFragment).commit()
     }
@@ -34,7 +36,13 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun favoriteBtnClicked(dish: Dish) {
-        favoriteDishes.add(dish)
+        if(!favoriteDishes.contains(dish)){
+            favoriteDishes.add(dish)
+        }
+    }
+
+    override fun favoriteClicked() {
+        supportFragmentManager.beginTransaction().replace(R.id.container,favoriteListFragment).commit()
     }
 
 
@@ -46,4 +54,11 @@ class MainActivity : AppCompatActivity(),
     override fun backClicked() {
         supportFragmentManager.beginTransaction().replace(R.id.container,dishesListFragment).commit()
     }
-}
+
+     override fun deleted(dish: Dish) {
+         favoriteDishes.remove(dish)
+         favoriteListFragment.notifyDataChanged()
+     }
+
+
+ }
